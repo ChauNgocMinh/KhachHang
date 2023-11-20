@@ -1,0 +1,199 @@
+﻿@page "/home"
+<PageTitle>Home</PageTitle>
+
+<div class="function-container">
+    <div class="function-item">
+         <i class="fa-solid fa-money-bill-1-wave icon-home"></i> 
+        Hóa đơn
+    </div>
+    <div class="function-item">
+        <i class="fa-solid fa-dice icon-home"></i>
+        Dịch vụ
+    </div>
+    <div class="function-item">
+        <i class="fa-solid fa-wrench icon-home"></i>
+        Yêu cầu bảo trì
+    </div>
+    <div class="function-item">
+        <i class="fa-solid fa-bullhorn icon-home"></i>
+        Thông báo
+    </div>
+</div>
+
+
+<div class="hoadon-chart">
+    <div class="hoadonthangnay">
+        3,803,002 <u> đ</u> 
+    </div>
+    <canvas id="myChart"></canvas>
+</div>
+
+
+<div style="color: #9BA4B5; margin: 10px 0px 2px 0px">Hóa đơn mới nhất </div>
+<div class="hoadon-newest-container"> 
+    <div class="hoadon-newest-title">
+        <strong>Báo phí tháng 11/2023</strong>
+        <i class="fa-solid fa-arrow-right" ></i>
+    </div>
+    <div class="hoadon-newest-tong">
+        Tổng thanh toán: <b>3,803,002</b>
+    </div>
+    <div class="hoadon-newest-no">
+        Còn nợ: <b style="color:#FF6969"> 3,803,002 </b>
+    </div>
+</div>
+
+<div class="news">
+    <img class="news-background" src="https://th.bing.com/th/id/OIP.CJ7F9PUEdk16XqJ49VsDQwHaE8?rs=1&pid=ImgDetMain">
+    <div class="news-container">
+        <div class="news-title">Comming soon</div>
+        <div class="news-content">Đăng kí ngay</div>
+    </div>
+</div>
+
+<style>
+    .function-container{
+        display:flex;
+        justify-content:space-around;
+        margin-bottom: 10px;
+    }
+    .function-item{
+        display: flex;
+        flex-direction: column;
+        border: none;
+        font-size: 10px;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .icon-home {
+        border:none;
+        border-radius:30px;
+        padding: 7px;
+        box-shadow: 0 0 10px 0.05px #D8C4B6;
+        margin: 10px 0px;
+    }
+    .fa-money-bill-1-wave{
+        color: #AAC8A7;
+    }
+    .fa-dice{
+        color: #FF6347;
+    }
+    .fa-wrench{
+        color: #F4E869;
+    }    
+    .fa-bullhorn{
+        color: #FFC7EA;
+    }
+    .hoadon-chart{
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        padding: 10px;
+        box-shadow: 0 0 5px 0.05px #9BA4B5;
+        border-radius: 10px;
+    }
+    .hoadonthangnay{
+        font-weight: 700;
+        background-color: #EEF5FF;
+        width: 100%;
+        padding: 10px 0px;
+        border-radius: 10px;
+        display: flex;
+        justify-content:center;
+    }
+
+    .hoadon-newest-container{
+        box-shadow: 0 0 5px 0.05px #9BA4B5;
+        padding:10px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .hoadon-newest-title{
+        width:100%;
+        font-weight: 500;
+        font-weight: 500;
+        display: flex;
+        justify-content: space-between;
+    }
+    .hoadon-newest-tong, .hoadon-newest-no{
+        font-size: 13px;
+    }
+    .news{
+        position: relative;
+        box-shadow: 0 0 5px 0.05px #9BA4B5;
+        display: flex;
+        border-radius: 17px;
+        overflow: hidden;
+    }
+
+    .news-background{
+        opacity: 0.2;
+        width: 100%;
+    }
+
+    .news-container{
+        position: absolute;
+        top: 30px;
+    }
+    .news-title{
+        font-size: 40px;
+        color: #363062;
+        font-weight:800;
+
+    }
+    .news-content{
+        position:relative;
+        left: 120px;
+        font-size: 20px;
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    ctx = document.getElementById('myChart');
+    data = [
+        { month: "01", count: 0 },
+        { month: "02", count: 0 },
+        { month: "03", count: 0 },
+        { month: "04", count: 0 },
+        { month: "05", count: 3000000 },
+        { month: "06", count: 2760000 },
+        { month: "07", count: 2400000 },
+        { month: "08", count: 3803002 },
+        { month: "09", count: 0 },
+        { month: "10", count: 0 },
+        { month: "11", count: 0 },
+        { month: "12", count: 0 },
+        
+    ];
+
+    new Chart(ctx,{
+        type: 'bar',
+        data: {
+            labels: data.map(row => row.month),
+            datasets: [
+                {
+                    label: 'Hóa đơn tháng này',
+                    data: data.map(row => row.count),
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }    
+    });
+</script>
+
+@code {
+  
+}

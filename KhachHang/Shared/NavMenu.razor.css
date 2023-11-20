@@ -50,10 +50,14 @@
     color: white;
 }
 
+.fa-solid{
+    margin-right: 20px;
+}
+
 @media (min-width: 641px) {
     .navbar-toggler {
         display: none;
-    }
+    }   
 
     .collapse {
         display: block;
